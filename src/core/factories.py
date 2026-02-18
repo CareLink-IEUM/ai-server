@@ -1,8 +1,8 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_huggingface import HuggingFaceEmbeddings
-from src.config import Config
+from src.core.config import Config
 
-class ModelFactory:
+class Factories:
     @staticmethod
     def get_embedding_model():
         print(f"📥 로컬 임베딩 모델({Config.EMBEDDING_MODEL_NAME}) 로딩 중...")
@@ -15,7 +15,7 @@ class ModelFactory:
     @staticmethod
     def get_llm():
         return ChatGoogleGenerativeAI(
-            model="gemini-1.5-flash",
+            model="gemini-2.5-flash",
             temperature=0,
-            google_api_key=Config.GOOGLE_API_KEY
+            google_api_key=Config.GOOGLE_API_KEY,
         )
